@@ -17,8 +17,8 @@ class QwenLLMChat(LLM):
     def __init__(self, model_path: str):
         super().__init__()
         nf4_config = BitsAndBytesConfig(
-            load_in_4bit=True,
-            bnb_4bit_quant_type="nf4",
+            load_in_8bit=True,
+            # bnb_4bit_quant_type="nf4",
         )
         self.tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
         self.model = AutoModelForCausalLM.from_pretrained(model_path, 

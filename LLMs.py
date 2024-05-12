@@ -14,7 +14,7 @@ class QwenLLMChat(LLM):
     tokenizer : AutoTokenizer = None
     model : AutoModelForCausalLM = None
     
-    def __init__(self, model_path: str, ):
+    def __init__(self, model_path: str):
         super().__init__()
         nf4_config = BitsAndBytesConfig(
             load_in_4bit=True,
@@ -26,6 +26,7 @@ class QwenLLMChat(LLM):
                                                           device_map="auto",
                                                           quantization_config=nf4_config)
         self.model.generation_config = GenerationConfig.from_pretrained(model_path)
+        self.model = self.model.eval()
 
     def _call(self, prompt : str, stop: Optional[List[str]] = None,
                 run_manager: Optional[CallbackManagerForLLMRun] = None,

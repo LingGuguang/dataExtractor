@@ -17,10 +17,16 @@ FEW_SHOT_TEMPLATE = """下面将提供一段文字，该文字包含了6个query
 """
 
 def fewshotSchema():
-    headline_schema = ResponseSchema(name='headline', description='')
-    question_schema = ResponseSchema(name='question', description='')
-    answer_schema = ResponseSchema(name='answer',
-                                   description='回答只有Yes和No，不允许出现其他有效值。若没有回答，则填写Null')
+    headline_schema = ResponseSchema(name='headline', 
+                                     type="List[string]",
+                                     description='6个headline组成的List。headline的顺序必须和文字中的顺序相同。')
+    question_schema = ResponseSchema(name='question', 
+                                     type="List[string]", 
+                                     description='6个question组成的List。question的顺序必须和文字中的顺序相同。')
+    answer_schema = ResponseSchema(name='answer', 
+                                   type="List[string]", 
+                                   description='5个answer组成的List。question的顺序必须和文字中的顺序相同。\
+                                    回答只有Yes和No，不允许出现其他有效值。若没有回答，则填写Null')
     response_schemas = [headline_schema, question_schema, answer_schema]
     output_parser = StructuredOutputParser.from_response_schemas(response_schemas)
     return output_parser

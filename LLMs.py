@@ -42,6 +42,10 @@ class QwenLLMChat(LLM):
         response = self.tokenizer.batch_decode(generated_ids, skip_special_tokens=True)[0]
         
         return response
+    
+    @property
+    def _llm_type(self) -> str:
+        return "qwen1.5_LLM"
 
 class baichuan2LLM(LLM):
     tokenizer : AutoTokenizer = None
@@ -69,3 +73,7 @@ class baichuan2LLM(LLM):
         response= self.model.chat(self.tokenizer, messages)
         print("response_from_call:",response)
         return response
+    
+    @property
+    def _llm_type(self) -> str:
+        return "baichuan2_LLM"

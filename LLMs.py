@@ -23,7 +23,7 @@ class QwenLLMChat(LLM):
         self.tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
         self.model = AutoModelForCausalLM.from_pretrained(model_path, 
                                                           trust_remote_code=True, 
-                                                          device_map="auto",
+                                                          device_map="cuda",
                                                           quantization_config=nf4_config)
         self.model.generation_config = GenerationConfig.from_pretrained(model_path)
         self.model = self.model.eval()

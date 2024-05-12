@@ -4,7 +4,7 @@ from langchain.output_parsers import ResponseSchema
 from langchain.output_parsers import StructuredOutputParser
 
 import os, sys
-from templateSet import FEW_SHOT_TEMPLATE, fewshotSchema
+from utils.templateSet import FEW_SHOT_TEMPLATE, fewshotSchema
 
 
 

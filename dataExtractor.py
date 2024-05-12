@@ -21,7 +21,7 @@ class fewShotExtractor:
             llm=llm, 
             prompt=prompt,
             return_final_only=True,
-            verbose=True,
+            verbose=False,
             output_key=self.output_key,# 设置输出内容的占位符，这使得该输出可以直接被后续链中的template直接使用。
             # input_key="input", # 设置conversation的新输入的占位符
             output_parser=output_parser,

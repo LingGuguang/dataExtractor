@@ -9,9 +9,12 @@ from langchain.chains.llm import LLMChain
 from langchain_core.prompts import PromptTemplate
 
 from dataExtractor import fewShotExtractor
+import os, sys
 
 datasets = read_json("test.json")[:2]
-
+current_path = os.path.dirname(sys.path[0])
+model_path = os.path.join(current_path, "LLModel/qwen1.5-14B-chat")
+llm = QwenLLMChat()
 extractor = fewShotExtractor()
 QAlist = []
 for data in datasets:

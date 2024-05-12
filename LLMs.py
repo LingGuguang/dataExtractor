@@ -34,11 +34,6 @@ class QwenLLMChat(LLM):
         response = self.tokenizer.batch_decode(generated_ids, skip_special_tokens=True)[0]
         
         return response
-    
-
-
-
-
 
 class baichuan2LLM(LLM):
     tokenizer : AutoTokenizer = None

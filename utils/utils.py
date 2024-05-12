@@ -15,6 +15,7 @@ def save_json(path, dic):
     with open(path,"w", encoding='utf-8') as f: 
         f.write(json.dumps(dic,ensure_ascii=False, indent=2)) 
 
-def save_txt(path, dic):
+def save_text(path, dic):
     with open(path, 'w+', encoding='utf-8') as f:
         f.write(dic)
+

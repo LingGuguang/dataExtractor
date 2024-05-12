@@ -14,7 +14,7 @@ llm = QwenLLMChat(model_path)
 extractor = fewShotExtractor(llm)
 QAlist = []
 for data in datasets:
-    ids = data['ids']
+    ids = data['id']
     input = data['input']
     QAtemp = extractor.extract(input)
     QAlist.extend(QAtemp)

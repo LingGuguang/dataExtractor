@@ -26,7 +26,7 @@ def fewshotSchema():
     answer_schema = ResponseSchema(name='answer', 
                                    type="List[string]", 
                                    description='5个answer组成的List。question的顺序必须和文字中的顺序相同。\
-                                    回答只有Yes和No，不允许出现其他有效值。若没有回答，则填写Null')
+                                    回答只有Yes、No、Null。当回答存在时，只能是Yes或No，否则是Null。')
     response_schemas = [headline_schema, question_schema, answer_schema]
     output_parser = StructuredOutputParser.from_response_schemas(response_schemas)
     return output_parser
